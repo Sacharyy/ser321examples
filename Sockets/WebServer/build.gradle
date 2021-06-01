@@ -24,4 +24,13 @@ task FunWebServer(type: JavaExec) {
   standardInput = System.in
 }
 
+repositories {
+  mavenCentral()
+}
+
+dependencies{
+  compile 'org.json:json:20171018' // org.json
+  compile 'com.google.code.gson:gson:2.8.6' // Google JSON
+}
+
 
