@@ -16,7 +16,6 @@ write a response back
 
 package funHttpServer;
 
-import org.json.*;
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
@@ -26,6 +25,7 @@ import java.util.Random;
 import java.util.Map;
 import java.util.LinkedHashMap;
 import java.nio.charset.Charset;
+import org.json.*;
 
 class WebServer {
   public static void main(String args[]) {
@@ -217,10 +217,10 @@ class WebServer {
           }
           catch (Exception E)
           {
-            builder.append("HTTP/1.1 418 TEAPOT\n");
+            builder.append("HTTP/1.1 400 \n");
             builder.append("Content-Type: text/html; charset=utf-8\n");
             builder.append("\n");
-            builder.append("ERROR hERE");
+            builder.append("400 Error here, invalid int");
           }
 
 
@@ -302,8 +302,10 @@ class WebServer {
             builder.append(json);
 
           } catch (Exception e) {
-            System.out.println("exception: " + e.getMessage());
-            e.printStackTrace();
+            builder.append("HTTP/1.1 400 \n");
+            builder.append("Content-Type: text/html; charset=utf-8\n");
+            builder.append("\n");
+            builder.append("400 Bad request.");
           }
 
 
